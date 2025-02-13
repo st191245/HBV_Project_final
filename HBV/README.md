@@ -93,7 +93,7 @@ Locate the folder(HBV) containing the project files and open a terminal or comma
 
 clone the github repository here
 
->  https://github.com/st191245/HBV--Package 
+>   git clone https://github.com/st191245/HBV_Project_final.git
 
 2.Install required dependencies:
 the required dependencies for this project are
