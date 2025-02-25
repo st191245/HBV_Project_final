@@ -4,7 +4,7 @@
 
 ## Table of Contents:
 
-1. [Project's name](##Projects-name)
+1. [Project's name](#Projects-name)
 2. [Project purpose/description](#Project-purposedescription)
 3. [Motivation](#Motivation)
 4. [Goal](#Goal)
@@ -143,6 +143,7 @@ the logged messages.
 3.snow.py 
 
 This file contains two classes:
+
 1. DataReader-This class is responsible for loading and handling HBV model data.It has 3 functions.
    
 i.`__init__`  (csv_file_name, delimiter)- Initializes the object, sets the delimiter, and loads data from the specified CSV file
@@ -150,9 +151,10 @@ i.`__init__`  (csv_file_name, delimiter)- Initializes the object, sets the delim
 ii.`get_hbv_data(csv_file_name)`- Reads HBV model data into a Pandas DataFrame, handling errors and logging actions.
 
 iii.`drop_missing_data()` - Removes rows with missing values from the dataset and logs the action.
+
 2. Snow: This class inherits from _DataReader_, Models snow accumulation and melting.This class is also contain 3 functions.
 
-i.`__init__(csv_file_name, TT, Cmelt, SWE)` _-Initializes the snow model with threshold temperature (TT), melting coefficient (Cmelt), and initial snow water equivalent (SWE).
+i.`__init__(csv_file_name, TT, Cmelt, SWE)` _-Initializes the snow model with threshold temperature (TT), melting coefficient (Cmelt), and initial Snow Water Equivalent (SWE).
 
 ii.`calculate_snow_melt()`- Simulates snow accumulation and melting based on temperature and precipitation data.
 * This method uses TT and Cmelt to compute liquid water.
@@ -161,6 +163,7 @@ ii.`calculate_snow_melt()`- Simulates snow accumulation and melting based on tem
 iii.`__str__()` - Returns a string summary of the snow model parameters (TT, Cmelt, and SWE).
 
 3. runoff.py file
+   
 This file contains one class,SoilMoisture which inherits class Snow.It models soil moisture, evapotranspiration, and runoff processes.This Class contains 4 methods.
 
 i. ` ___init__(csv_file_name, beta, TT, Cmelt, SWE, mm_to_m, day_to_s, Area, initial_soil_moisture, FC, pwp)`-
@@ -181,10 +184,13 @@ Stores the results in Discharge_Vol_simulated column and Saves the updated dataf
 This file contains two functions, `create_plots()` and `create_plots2()`, which generate interactive scatter plots using Plotly to visualize hydrological data. These functions help in analyzing the simulated and observed discharge volumes as well as soil moisture and precipitation trends over time.
 Both functions utilize Plotly for dynamic visualization and include logging to track their execution status.
 
-#### Main Function Overview: Executing HBV Modeling
-The main() function accesses the `HBV_Core` package to execute the HBV hydrological modeling process.It has 3 functions.
+#### main.py file Overview: Executing HBV Modeling
+The main.py file accesses the `HBV_Core` package to execute the HBV hydrological modeling process.It has 3 functions.
 
-i.`hbv_calculation()`-
+i.`hbv_calculation()`-  This function is responsible for executing the entire runoff modeling process using the HBV hydrological model. It begins by initializing a `SoilMoisture` object with the provided CSV file, which contains the necessary hydrometeorological data. The function then sequentially processes the data by loading it, removing missing values, calculating snowmelt, estimating evapotranspiration (ET) and soil moisture, and computing the discharge volume. The processed data is stored in the data_hbv attribute of the runoff object. If plotting is enabled, it generates visualizations to compare simulated and observed values and Precipitation and SoilMoisture values. Throughout the process, logging is used to track execution steps and handle any unexpected errors. Finally, the processed dataset is returned for further analysis.
+ii.`statistics(processed_data)`-This function looks at runoff data and calculates the average and standard deviation for key variables like precipitation, simulated discharge, and observed discharge. This helps to see how the model's results compare to actual data, making it easier to understand and improve the model.
+iii.`main()`-This function serves as the entry point for the runoff modeling process. It first calls `hbv_calculation()` to process hydrological data, including snowmelt, evapotranspiration, soil moisture, and discharge volume calculations. Once the data is processed, it passes the results to the `statistics()` function, which analyzes key metrics like mean and standard deviation. This function ensures the complete execution of the model and statistical evaluation in a structured manner.
+
 ## Code diagram UML
 >   ![Imgname](Structure-uml.png)
 ## Installation and run a project
