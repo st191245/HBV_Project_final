@@ -29,11 +29,11 @@ The project aims to implement a hydrological model for simulating river discharg
 Hydrological models play a vital role in water resources engineering by enabling the approximate simulation of river discharge, which is crucial for effective water supply management, hydraulic structure design, and flood risk mitigation. This project implements an HBV-based model to enhance the understanding of catchment hydrology and provide a computational framework for predicting river water flow using meteorological data
 ***
 ## Goal
- * 1.Create a Python package for simulating river discharge.
+ * Create a Python package for simulating river discharge.
 
- * 2.Implement a simplified HBV hydrological model.
+ * Implement a simplified HBV hydrological model.
 
- * 3.Enable logging and visualization for better analysis.
+ * Enable logging and visualization for better analysis.
 
 The full package is available in: **GitHub Repository URL**
 ```
