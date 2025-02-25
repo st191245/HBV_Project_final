@@ -1,18 +1,17 @@
-# Project : Package for Hydrological Modeling of River Discharge
+# Package for Hydrological Modeling of River Discharge
 
 ***
 
 ## Table of Contents:
 
-1. [Project's name](#Projects-name)
-2. [Project purpose/description](#Project-purposedescription)
-3. [Motivation](#Motivation)
-4. [Goal](#Goal)
-5. [Theory behind the Package](#Theory)
-6. [Package requirements](#Package-requirements)
-7. [Code Overview](#code-overview)
-8. [Code diagram UML](#Code-Diagram)
-9. [Installation and run a project](#Installation-and-running-a-project)
+1. [Project purpose/description](#Project-purposedescription)
+2. [Motivation](#Motivation)
+3. [Goal](#Goal)
+4. [Theory behind the Package](#Theory)
+5. [Package requirements](#Package-requirements)
+6. [Code Overview](#code-overview)
+7. [Code diagram UML](#Code-Diagram)
+8. [Installation and run a project](#Installation-and-running-a-project)
 
 ***
 
@@ -21,10 +20,7 @@
       2. Hedieh Beigi Pouya-3762109
       3. Mohammad Sharif Khaleqi-3638660
      
-## Project's name 
-***
-Package for Hydrological Modeling of River Discharge
-***
+
 ## Project purpose/description 
 
 The project aims to implement a hydrological model for simulating river discharge based on various factors such as rainfall and snowfall,temperature,evapotranspiration and soil moisture storage.The project helps in understanding hydrological processes and their role in water resource management and flood forecasting. This model is important for understanding water flows and how it is stored in nature, which helps in managing water resources, anticipating how environmental changes will affect water systems, and making informed decisions in areas related to water use and conservation. 
