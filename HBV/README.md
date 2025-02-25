@@ -116,6 +116,7 @@ Note:The data file should contain the following columns for the input of the pro
 | 01/10/1987      |       0       | 0.93 |    7.91     |      1.54      |     5.205     |
 | 02/10/1987      |       0       | 0.55 |    6.41     |      1.4       |     4.731     |
 | .....           |      ...      |..|...|..|...|
+
 date(DD/MM/YYYY),precipitaion (mm/day),temperature(°C),specific discharge in (mm/day), and discharge volume in (m³/s) for the necessary calculations 
 for the project.The catchment area is 289 Km<sup>2</sup>.
 
