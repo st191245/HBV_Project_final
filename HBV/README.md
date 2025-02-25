@@ -40,7 +40,7 @@ Hydrological models play a vital role in water resources engineering by enabling
 
 The full package is available in: **GitHub Repository URL**
 ```
- https://github.com/st191245/HBV--Package
+https://github.com/st191245/HBV_Project_final.git
 ```
 ***
 ## Theory
