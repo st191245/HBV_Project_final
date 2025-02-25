@@ -17,9 +17,10 @@
 ***
 
 ### Authors:  BKS
-      1. Hedieh Beigi Pouya-3762109
-      2. Mohammad Sharif Khaleqi-3638660
-      3. Shunmuga Priya Subbiah-3703058
+      1. Shunmuga Priya Subbiah-3703058
+      2. Hedieh Beigi Pouya-3762109
+      3. Mohammad Sharif Khaleqi-3638660
+     
 ## Project's name 
 ***
 Package for Hydrological Modeling of River Discharge
