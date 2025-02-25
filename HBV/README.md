@@ -93,7 +93,6 @@ where:
 - **k**- a coefficient that representing the efficiency of converting soil moisture into runoff 
 - **S**- Soil moisture storage
   
-## (Bergström, Sten & FORSMAN, ARNE. (1973). Development of a conceptual deterministic rainfall-runoff model. Nordic Hydrol.. 4. 147-170. 10.2166/nh.1973.0012. )
 ***
 ## Package requirements
 The required dependencies for successfully run this project are,
@@ -120,7 +119,6 @@ Note:The data file should contain the following columns for the input of the pro
 date(DD/MM/YYYY),precipitaion (mm/day),temperature(°C),specific discharge in (mm/day), and discharge volume in (m³/s) for the necessary calculations 
 for the project.The catchment area is 289 Km<sup>2</sup>.
 
-source:https://nrfa.ceh.ac.uk/data/station/info/12007
 ***
 ## Code Overview
 The object-oriented code utilizes custom classes, which are referenced within a main.py script to calculate runoff resulting from precipitation based on provided inputs. The code structure is built upon custom classes and functions defined in the following package.
@@ -222,7 +220,8 @@ The Generated output files would be,
      - 2.Soil_Moisture and Precipitation
 
 ## Source:
-1.
+1.Bergström, Sten & FORSMAN, ARNE. (1973). Development of a conceptual deterministic rainfall-runoff model. Nordic Hydrol.. 4. 147-170. 10.2166/nh.1973.0012.
+2.https://nrfa.ceh.ac.uk/data/station/info/12007
 
 
 
