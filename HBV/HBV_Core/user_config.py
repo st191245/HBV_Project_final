@@ -22,11 +22,10 @@ except ImportError:
     print("ERROR: Cannot import plotly.graph_objects,plotly.offline packages.")
 
 # File paths
-CSV_FILE_NAME = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                                             "data", "CAMELS_GB_hydromet_timeseries_12007.csv")
-print("Resolved CSV File Path:", CSV_FILE_NAME)
+BASE_PATH=r"D:\python-exercises\HBV"
+CSV_FILE_NAME = os.path.join(BASE_PATH,"data", "CAMELS_GB_hydromet_timeseries_12007.csv")
 print("File Exists:", os.path.exists(CSV_FILE_NAME))
-OUTPUT_FILE = "Data_with_discharge_simulated_output1.csv"
+OUTPUT_FILE = os.path.join(BASE_PATH, "Data_with_discharge_simulated_output1.csv")
 
 # Snow parameters
 TT = 0  # Threshold temperature for snow accumulation
