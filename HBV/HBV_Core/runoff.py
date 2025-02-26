@@ -9,7 +9,7 @@ class SoilMoisture(Snow):
     Authored by: Shunmuga Priya
     """
 
-       def __init__(self, csv_file_name=CSV_FILE_NAME, beta=BETA, TT=TT, Cmelt=CMELT, SWE=SWE_INITIAL, mm_to_m=MM_TO_M,
+    def __init__(self, csv_file_name=CSV_FILE_NAME, beta=BETA, TT=TT, Cmelt=CMELT, SWE=SWE_INITIAL, mm_to_m=MM_TO_M,
                  day_to_s=DAY_TO_S, Area=CATCHMENT_AREA, initial_soil_moisture=INITIAL_SOIL_MOISTURE, FC=FIELD_CAPACITY,
                  pwp=PWP):
         """
@@ -19,9 +19,15 @@ class SoilMoisture(Snow):
         super().__init__(csv_file_name, TT, Cmelt, SWE)
 
         # Initialize the specific parameters for the SoilMoisture model
-        self.beta = beta,self.k = K , self.time_step = TIME_STEP
-        self.initial_soil_moisture = initial_soil_moisture , self.FC = FC,self.pwp = pwp
-        self.area = Area , self.mm_to_m = mm_to_m , self.day_to_s = day_to_s
+        self.beta = beta,
+        self.k = K
+        self.time_step = TIME_STEP
+        self.initial_soil_moisture = initial_soil_moisture
+        self.FC = FC
+        self.pwp = pwp
+        self.area = Area
+        self.mm_to_m = mm_to_m
+        self.day_to_s = day_to_s
         self.processed_data = None  # Placeholder for processed data (initialized to None)
 
         action_logger.info(
@@ -45,8 +51,8 @@ class SoilMoisture(Snow):
             raise KeyError("Required columns 'liquid_water' or 'peti' are missing from the DataFrame.")
 
         # Initialize empty lists to store the calculated values
-        soil_moisture , runoff ,et_values = [] , [] ,[]
-        
+        soil_moisture, runoff,et_values = [],[],[]
+
         # Loop through the DataFrame to calculate ET, soil moisture, and runoff for each time step
         for index, row in self.data_hbv.iterrows():
             liquid_water = row['liquid_water']  # Get the liquid water row from Dataframe
@@ -66,9 +72,7 @@ class SoilMoisture(Snow):
                 et = (s_new / self.FC) * peti if s_new < self.pwp else peti  # Calculate ET for this time step
 
             # Append the calculated values to their respective lists
-            soil_moisture.append(s_new)
-            runoff.append(q_new)
-            et_values.append(et)
+            soil_moisture.append(s_new), runoff.append(q_new),  et_values.append(et)
 
         # Update the DataFrame with the new calculated values
         self.data_hbv["Simulated_Runoff"] = runoff
@@ -96,7 +100,7 @@ class SoilMoisture(Snow):
         using the formula for converting runoff (in mm/day) to discharge volume (in m³/s).
         The calculated discharge volumes are added to a new column in the DataFrame.
 
-        The updated DataFrame can be saved to an CSV file.
+        The updated DataFrame can be saved to an Excel file.
 
         :return: Updated DataFrame with 'Discharge_Vol_simulated' column containing the calculated discharge volumes
         :rtype: pandas.DataFrame
