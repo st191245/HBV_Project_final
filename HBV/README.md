@@ -10,7 +10,7 @@
 4. [Theory behind HBV Modeling](#Theory)
 5. [Package requirements](#Package-requirements)
 6. [Code Overview](#code-overview)
-7. [Code diagram UML](#Code-Diagram)
+7. [UML](#Code-Diagram)
 8. [Installation and run a project](#Installation-and-running-a-project)
 
 ***
@@ -168,7 +168,7 @@ This file contains two classes:
 
 3.1. `DataReader`-This class is responsible for loading and handling HBV model data.It has 3 functions.
    
-3.1.1.`__init__`  (csv_file_name, delimiter)- Initializes the object, sets the delimiter, and loads data from the specified CSV file
+      3.1.1.`__init__`  (csv_file_name, delimiter)- Initializes the object, sets the delimiter, and loads data from the specified CSV file
  
 3.1.2.`get_hbv_data(csv_file_name)`- Reads HBV model data into a Pandas DataFrame, handling errors and logging actions.
 
@@ -219,7 +219,7 @@ The main.py file accesses the `HBV_Core` package to execute the HBV hydrological
 
 3.`main()`-This function serves as the entry point for the runoff modeling process. It first calls `hbv_calculation()` to process hydrological data, including snowmelt, evapotranspiration, soil moisture, and discharge volume calculations. Once the data is processed, it passes the results to the `statistics()` function, which analyzes key metrics like mean and standard deviation. This function ensures the complete execution of the model and statistical evaluation in a structured manner.
 
-## Code diagram UML
+## UML
 >   ![Imgname](Structure-uml.png)
 ## Installation and run a project
 
