@@ -105,8 +105,8 @@ where:
 - **$k$**- a coefficient that representing the efficiency of converting soil moisture into runoff 
 - **$S$**- Soil moisture storage
   
-  ![Imgname](hydrologicalprocess.png)
-  Source: Nguyen, P. S., Nguyen, T. H., & Nguyen, T. H. (2024)
+  ![Imgname](model.png)
+  Source:Lecture notes-Integrated Watershed Modelling
 
   
 ***
