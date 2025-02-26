@@ -7,6 +7,7 @@ class SoilMoisture(Snow):
       This class models the soil moisture and runoff process. It extends the Snow model
       and adds functionality for calculating evapotranspiration (ET) and soil moisture
       based on input data and parameters.
+      Author: Shunmuga Priya
       """
 
     def __init__(self, csv_file_name=CSV_FILE_NAME, beta=BETA, TT=TT, Cmelt=Cmelt, SWE=SWE_INITIAL, mm_to_m=mm_to_m,
