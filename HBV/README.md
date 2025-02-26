@@ -7,7 +7,7 @@
 1. [Project purpose/description](#Project-purposedescription)
 2. [Motivation](#Motivation)
 3. [Goal](#Goal)
-4. [Theory behind the Package](#Theory)
+4. [Theory behind HBV Modeling](#Theory)
 5. [Package requirements](#Package-requirements)
 6. [Code Overview](#code-overview)
 7. [Code diagram UML](#Code-Diagram)
