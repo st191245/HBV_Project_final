@@ -9,7 +9,7 @@ class SoilMoisture(Snow):
     Authored by: Shunmuga Priya
     """
 
-    def __init__(self, csv_file_name=CSV_FILE_NAME, beta=BETA, TT=TT, Cmelt=CMELT, SWE=SWE_INITIAL, mm_to_m=MM_TO_M,
+       def __init__(self, csv_file_name=CSV_FILE_NAME, beta=BETA, TT=TT, Cmelt=CMELT, SWE=SWE_INITIAL, mm_to_m=MM_TO_M,
                  day_to_s=DAY_TO_S, Area=CATCHMENT_AREA, initial_soil_moisture=INITIAL_SOIL_MOISTURE, FC=FIELD_CAPACITY,
                  pwp=PWP):
         """
@@ -19,15 +19,9 @@ class SoilMoisture(Snow):
         super().__init__(csv_file_name, TT, Cmelt, SWE)
 
         # Initialize the specific parameters for the SoilMoisture model
-        self.beta = beta
-        self.k = K
-        self.time_step = TIME_STEP
-        self.initial_soil_moisture = initial_soil_moisture
-        self.FC = FC
-        self.pwp = pwp
-        self.area = Area
-        self.mm_to_m = mm_to_m
-        self.day_to_s = day_to_s
+        self.beta = beta,self.k = K , self.time_step = TIME_STEP
+        self.initial_soil_moisture = initial_soil_moisture , self.FC = FC,self.pwp = pwp
+        self.area = Area , self.mm_to_m = mm_to_m , self.day_to_s = day_to_s
         self.processed_data = None  # Placeholder for processed data (initialized to None)
 
         action_logger.info(
@@ -51,10 +45,8 @@ class SoilMoisture(Snow):
             raise KeyError("Required columns 'liquid_water' or 'peti' are missing from the DataFrame.")
 
         # Initialize empty lists to store the calculated values
-        soil_moisture = []
-        runoff = []
-        et_values = []
-
+        soil_moisture , runoff ,et_values = [] , [] ,[]
+        
         # Loop through the DataFrame to calculate ET, soil moisture, and runoff for each time step
         for index, row in self.data_hbv.iterrows():
             liquid_water = row['liquid_water']  # Get the liquid water row from Dataframe
