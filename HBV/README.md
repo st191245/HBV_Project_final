@@ -168,7 +168,7 @@ This file contains two classes:
 
 3.1. `DataReader`-This class is responsible for loading and handling HBV model data.It has 3 functions.
    
-      3.1.1.`__init__`  (csv_file_name, delimiter)- Initializes the object, sets the delimiter, and loads data from the specified CSV file
+3.1.1.`__init__`  (csv_file_name, delimiter)- Initializes the object, sets the delimiter, and loads data from the specified CSV file
  
 3.1.2.`get_hbv_data(csv_file_name)`- Reads HBV model data into a Pandas DataFrame, handling errors and logging actions.
 
