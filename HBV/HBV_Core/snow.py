@@ -7,6 +7,7 @@ class DataReader:
      :param csv_file_name: str, path to the CSV file (default is CSV_FILE_NAME)
      :param delimiter: str, delimiter used in the CSV file (default is ",")
      :return: None
+     Author: Sharif
      """
     def __init__(self, csv_file_name=CSV_FILE_NAME, delimiter=","):
         self.sep = delimiter
