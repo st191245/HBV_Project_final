@@ -10,6 +10,7 @@ def create_plots(data_hbv): # Creating Scatter plots using plotly.graph_objects
 
        :param data_hbv: DataFrame containing the date and discharge volume data
        :return: Plotly figure object representing the generated scatter plot
+       Authors: Hedieh & Shunmuga Priya
        """
 
     discharge_plots = [
