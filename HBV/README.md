@@ -105,7 +105,7 @@ where:
 - **$k$**- a coefficient that representing the efficiency of converting soil moisture into runoff 
 - **$S$**- Soil moisture storage
   
->  ![Imgname](HBV/hydrologicalprocess.png) 
+  ![Imgname](hydrologicalprocess.png) 
 
   
 ***
