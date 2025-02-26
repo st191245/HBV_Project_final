@@ -2,7 +2,7 @@ from HBV_Core.runoff import SoilMoisture
 from HBV_Core.visualization import *
 from HBV_Core.log_config import *
 from HBV_Core.user_config import *
-
+#Authors: BKS
 
 def hbv_calculation():
     """
