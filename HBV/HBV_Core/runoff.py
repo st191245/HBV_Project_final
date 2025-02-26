@@ -141,9 +141,8 @@ class SoilMoisture(Snow):
         # Log the range of the calculated discharge volumes
         action_logger.info(f"Range of discharge volume calculated: {np.ptp(discharge_volume_simulated)}")
 
-        output_file = "../HBV/Data_with_discharge_simulated_output1.csv"  # Output file name
+        output_file = "../HBV/Data_with_discharge_simulated_output1.csv" 
         self.data_hbv.to_csv(output_file, index=False)  # Save the DataFrame to Excel
-        print(f"DataFrame with discharge volume has been saved to {output_file}")  # Print message confirming save
+        print(f"DataFrame with discharge volume has been saved to {output_file}")  
 
-        # Return the updated DataFrame with discharge volume data
         return self.data_hbv
