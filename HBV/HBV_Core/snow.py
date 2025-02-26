@@ -52,6 +52,7 @@ class Snow(DataReader):
        :param Cmelt: float, snowmelt coefficient (default is Cmelt)
        :param SWE: float, snow water equivalent (default is SWE_INITIAL)
        :return: None
+       Author: Hedieh
        """
     def __init__(self, csv_file_name=CSV_FILE_NAME, TT=TT, Cmelt=Cmelt, SWE=SWE_INITIAL):
         super().__init__(csv_file_name)
