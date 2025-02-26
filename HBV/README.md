@@ -112,7 +112,8 @@ To run this project successfully, the following dependencies are required:
 2. **Libraries/Modules**:
 *    `pandas`
 *    `numpy`
-*    `plotly`
+*    `plotly.graph_objects`
+*    `plotly.offline`
 *    `os`
 *    `logging`
 ### Input data
