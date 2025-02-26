@@ -1,6 +1,6 @@
 from HBV_Core.user_config import *
 
-#Authors:Hedieh,Shunmuga Priya & Sharif
+#Authors:Hedieh,Shunmuga Priya
 def setup_logger(name, log_file, level=logging.INFO):
     """
     Sets up a logger to log messages to a specified log file with the given logging level.
