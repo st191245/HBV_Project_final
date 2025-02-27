@@ -3,7 +3,7 @@ from HBV_Core.visualization import *
 from HBV_Core.log_config import *
 from HBV_Core.user_config import *
 
-# Authors: Shunmuga Priya & Hedieh
+# Authors: Hedieh,Sharif and Shunmuga Priya
 def hbv_calculation():
     """
        Execute the runoff modeling process, including loading data,
@@ -24,7 +24,7 @@ def hbv_calculation():
         runoff.get_hbv_data(CSV_FILE_NAME)  # Reads data from CSV
         runoff.drop_missing_data()  # Removes rows with missing values
         runoff.calculate_snow_melt()       #  Calculates snowmelt based on input arguments
-        runoff.calculate_ET_and_soil_moisture()  # Calculates evapotranspiration (ET) and soil moisture
+        runoff.calculate_runoff()  # Calculates runoff,ET and Soil Moisture
         runoff.volume_discharge()          # Calculates discharge volume
 
 
