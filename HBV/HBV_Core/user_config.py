@@ -1,4 +1,4 @@
-# config.py
+# User Configuration file
 
 # Authors
 # Shunmuga Priya Subbiah,WAREM
