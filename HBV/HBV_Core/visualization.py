@@ -1,6 +1,6 @@
 from HBV_Core.log_config import *
 
-
+ #Authored by :Shunmuga Priya
 def create_plots(data_hbv):  
     """
        Creates and displays scatter plots comparing simulated and observed discharge volumes.
@@ -11,7 +11,7 @@ def create_plots(data_hbv):
 
        :param data_hbv: DataFrame containing the date and discharge volume data
        :return: Plotly figure object representing the generated scatter plot
-       #Authored by :Shunmuga Priya
+      
        """
 
     discharge_plots = [
@@ -47,7 +47,7 @@ def create_plots2(data_hbv):
 
     This function generates a scatter plot for both soil moisture and precipitation over time.
     The plot is displayed interactively and can be saved.
-    :param data_hbv:DataFrame containing the date, soil moisture, and precipitation data
+    :param data_hbv:DataFrame containing the date, soil moisture and precipitation data
     :return:Plotly figure object representing the generated scatter plot
     """
     soil_moisture_plot = [
