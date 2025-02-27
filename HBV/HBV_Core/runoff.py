@@ -109,10 +109,10 @@ class SoilMoisture(Snow):
         discharge_volume_simulated = []  # List to store calculated discharge volumes
 
         # Access the 'Simulated_Runoff' from the DataFrame and calculate discharge volume for each row
-        for index, row in self.data_hbv.iterrows():
+        for index, row in self.data_hbv.iterrows():  # Iterating through the 'Simulated_Runoff' row from the DataFrame
             simulated_runoff = row['Simulated_Runoff']  # Accessing simulated runoff for the current row
 
-            # Ensure 'Simulated_Runoff' is in mm/day, converting it to m³/s using the given formula
+            # converting mm/day to m³/s using the given formula
             discharge_volume = simulated_runoff * self.mm_to_m * self.Area * self.day_to_s
 
             discharge_volume_simulated.append(discharge_volume)  # Append the calculated volume to the list
@@ -120,12 +120,11 @@ class SoilMoisture(Snow):
         # Add the calculated discharge volumes to the DataFrame as a new column
         self.data_hbv["Discharge_Vol_simulated"] = discharge_volume_simulated
 
-        # Log the range of the calculated discharge volumes
         action_logger.info(f"Range of discharge volume calculated: {np.ptp(discharge_volume_simulated)}")
 
-        output_file = "../HBV/Data_with_discharge_simulated_output1.csv"  # Output file name
-        self.data_hbv.to_csv(output_file, index=False)  # Save the DataFrame to Excel
-        print(f"DataFrame with discharge volume has been saved to {output_file}")  # Print message confirming save
+        output_file = OUTPUT_FILE
+        self.data_hbv.to_csv(output_file, index=False)  # Save the DataFrame to CSV
+        print(f"DataFrame with discharge volume has been saved to {output_file}")
 
         # Return the updated DataFrame with discharge volume data
         return self.data_hbv
