@@ -193,14 +193,16 @@ This file contains one class,SoilMoisture which inherits class Snow.It models so
 4.1. ` ___init__(csv_file_name, beta, TT, Cmelt, SWE, mm_to_m, day_to_s, Area, initial_soil_moisture, FC, pwp)`-
 Initializes the soil moisture model with parameters for soil properties, evapotranspiration, and runoff.
 
-4.2.`calculate_ET_and_soil_moisture()` -Computes evapotranspiration (ET), soil moisture, and runoff for each time step.
+4.2.`simulation()` -This function models the hydrological processes of soil moisture, runoff, and evapotranspiration (ET) over time. It calculates these values for each time step, starting with initial conditions and using previous values for subsequent steps. The function returns three lists containing the calculated values for soil moisture, runoff, and ET throughout the simulation period.
+
+4.3.`calculate_runoff()` -Computes evapotranspiration (ET), soil moisture, and runoff for each time step.
 Uses beta, field capacity (FC), and permanent wilting point (PWP) to update moisture balance.
 Updates the dataset with calculated Simulated_Runoff, Soil_moisture, and ET values.
 
-4.3.`__str__()` -
+4.4.`__str__()` -
 Returns a string summary of the soil moisture model parameters (beta, k, and timeStep).
 
-4.4.`volume_discharge()` -This function computes the discharge volume (m³/s) from simulated runoff which will be in(mm/day) using catchment area and time conversion factors.
+4.5.`volume_discharge()` -This function computes the discharge volume (m³/s) from simulated runoff which will be in(mm/day) using catchment area and time conversion factors.
 Stores the results in Discharge_Vol_simulated column and Saves the updated dataframe to an output file (Data_with_discharge_simulated_output1.csv) for further analysis and record-keeping.
 <p align="center">- - - - - - - - - - - - - - - - - - - -</p>
 
@@ -213,7 +215,7 @@ Both functions utilize Plotly for dynamic visualization and include logging to t
 #### main.py file Overview: Executing HBV Modeling
 The main.py file accesses the `HBV_Core` package to execute the HBV hydrological modeling process.It has 3 functions.
 
-1.`hbv_calculation()`-  This function is responsible for executing the entire runoff modeling process using the HBV hydrological model. It begins by initializing a `SoilMoisture` object with the provided CSV file, which contains the necessary hydrometeorological data. The function then sequentially processes the data by loading it, removing missing values, calculating snowmelt, estimating evapotranspiration (ET) and soil moisture, and computing the discharge volume. The processed data is stored in the data_hbv attribute of the runoff object. If plotting is enabled, it generates visualizations to compare simulated and observed values and Precipitation and SoilMoisture values. Throughout the process, logging is used to track execution steps and handle any unexpected errors. Finally, the processed dataset is returned for further analysis.
+1.`hbv_calculation()`-  This function is responsible for executing the entire runoff modeling process using the HBV hydrological model. It begins by initializing a `SoilMoisture` object with the provided CSV file, which contains the necessary hydrometeorological data. The function then sequentially processes the data by loading it, removing missing values, calculating snowmelt, simulating the necessary parameters and estimating runoff, and computing the discharge volume. The processed data is stored in the data_hbv attribute of the runoff object. If plotting is enabled, it generates visualizations to compare simulated and observed values as first plot, Precipitation and SoilMoisture values as second plot. Throughout the process, logging is used to track execution steps and handle any unexpected errors. Finally, the processed dataset is returned for further analysis.
 
 2.`statistics(processed_data)`-This function looks at runoff data and calculates the average and standard deviation for key variables like precipitation, simulated discharge, and observed discharge. This helps to see how the model's results compare to actual data, making it easier to understand and improve the model.
 
