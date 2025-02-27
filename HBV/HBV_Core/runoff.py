@@ -1,4 +1,4 @@
-from HBV_Core.snow import  Snow
+from HBV_Core.snow import Snow
 from HBV_Core.log_config import *
 
 
@@ -34,9 +34,34 @@ class SoilMoisture(Snow):
         action_logger.info(
             f"SoilMoisture model initialized with beta={self.beta}, k={self.k}, timeStep={self.timeStep}")
 
-    def calculate_ET_and_soil_moisture(self):
+    def simulation(self):
         """
-        Calculate evapotranspiration (ET) and soil moisture for each time step.
+         Simulates the hydrological processes of soil moisture, runoff, and evapotranspiration (ET) over
+         a series of time steps.
+         It starts with initial conditions and uses previous values for subsequent steps.
+        """
+        soil_moisture, runoff, et_values = [], [], []  # Empty lists to store data
+        for index, row in self.data_hbv.iterrows():
+            liquid_water = row['liquid_water']  # Get the liquid water row from Dataframe
+            peti = row['peti']  # Get the peti (Potential Evapotranspiration) row from Dataframe
+            if index == 0:  # For the first row, initialize with the initial conditions
+                s_new = self.initial_soil_moisture
+                q_new = self.k * s_new  # runoff for the first time step
+                et = (s_new / self.FC) * peti if s_new < self.pwp else peti  # ET for the first time step
+            else:  # For subsequent rows, calculation based on previous values
+                inflow = liquid_water  # Incoming water from precipitation and snow melt
+                outflow = runoff[-1] + et_values[-1]  # Sum of previous runoff and ET values
+                sm_t = max(0, soil_moisture[-1] + inflow - outflow)  # Calculate the new soil moisture
+                qb_t = liquid_water * ((sm_t / self.FC) ** self.beta)  # Calculate runoff based on soil moisture
+                s_new = max(0.0, soil_moisture[-1] + inflow - qb_t - et_values[-1])  # Update soil moisture
+                q_new = qb_t  # Update runoff value
+                et = (s_new / self.FC) * peti if s_new < self.pwp else peti  # Calculate ET for this time step
+            soil_moisture.append(s_new), runoff.append(q_new), et_values.append(et)
+        return soil_moisture, runoff, et_values
+
+    def calculate_runoff(self):
+        """
+        Calculate runoff,evapotranspiration (ET) and soil moisture for each time step.
 
         This method computes soil moisture, runoff, and ET values and updates the DataFrame
         with the calculated values.
@@ -50,29 +75,8 @@ class SoilMoisture(Snow):
             error_logger.error("Required columns 'liquid_water' or 'peti' are missing from the DataFrame.")
             raise KeyError("Required columns 'liquid_water' or 'peti' are missing from the DataFrame.")
 
-        # Initialize empty lists to store the calculated values
-        soil_moisture, runoff, et_values = [], [], []
-
         # Loop through the DataFrame to calculate ET, soil moisture, and runoff for each time step
-        for index, row in self.data_hbv.iterrows():
-            liquid_water = row['liquid_water']  # Get the liquid water row from Dataframe
-            peti = row['peti']  # Get the peti (Potential Evapotranspiration) row from Dataframe
-
-            if index == 0:  # For the first row, initialize with the initial conditions
-                s_new = self.initial_soil_moisture
-                q_new = self.k * s_new  # runoff for the first time step
-                et = (s_new / self.FC) * peti if s_new < self.pwp else peti  # ET for the first time step
-            else:  # For subsequent rows, calculation based on previous values
-                inflow = liquid_water  # Incoming water from precipitation and snow melt
-                outflow = runoff[-1] + et_values[-1]  # Sum of previous runoff and ET values
-                sm_t = max(0, soil_moisture[-1] + inflow - outflow)  # Calculate the new soil moisture
-                qb_t = liquid_water * ((sm_t / self.FC) ** self.beta)  # Calculate runoff based on soil moisture
-                s_new = max(0.0, soil_moisture[-1] + inflow - qb_t - et_values[-1])  # Update soil moisture
-                q_new = qb_t  # Update runoff value
-                et = (s_new / self.FC) * peti if s_new < self.pwp else peti  # Calculate ET for this time step
-
-            # Append the calculated values to their respective lists
-            soil_moisture.append(s_new), runoff.append(q_new), et_values.append(et)
+        soil_moisture, runoff, et_values = SoilMoisture.simulation(self)
 
         # Update the DataFrame with the new calculated values
         self.data_hbv["Simulated_Runoff"] = runoff
@@ -89,9 +93,8 @@ class SoilMoisture(Snow):
 
         :return: String with the values of beta, k, and timeStep
         """
-        # Format the string with the current values of the model parameters
+
         return f"SoilMoisture model with beta={self.beta}, k={self.k}, timeStep={self.timeStep}"
-        # Return a summary string containing beta, k, and timeStep value
 
     def volume_discharge(self):
         """
@@ -100,8 +103,7 @@ class SoilMoisture(Snow):
         This method iterates over each row of the data to calculate the discharge volume
         using the formula for converting runoff (in mm/day) to discharge volume (in m³/s).
         The calculated discharge volumes are added to a new column in the DataFrame.
-
-        Optionally, the updated DataFrame can be saved to an Excel file.
+        It saves the Dataframe as CSV file
 
         :return: Updated DataFrame with 'Discharge_Vol_simulated' column containing the calculated discharge volumes
         """
