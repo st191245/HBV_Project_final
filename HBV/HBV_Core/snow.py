@@ -63,7 +63,7 @@ class Snow(DataReader):
         """
         super().__init__(csv_file_name)
         self.TT = TT
-        self.Cmelt = Cmelt
+        self.Cmelt = CMELT
         self.SWE = SWE
         action_logger.info(f"Snow model initialized with TT={self.TT}, Cmelt={self.Cmelt}, SWE={self.SWE}")
 
