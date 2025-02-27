@@ -1,7 +1,7 @@
 from HBV_Core.log_config import *
 
 
-#Authored by :Shunmuga Priya
+#Authored by :Shunmuga Priya & Hedieh
 def create_plots(data_hbv):  
     """
        Creates and displays scatter plots comparing simulated and observed discharge volumes.
