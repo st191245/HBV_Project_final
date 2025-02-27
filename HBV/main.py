@@ -34,7 +34,7 @@ def hbv_calculation():
         if ENABLE_PLOTTING:
             action_logger.info("Plotting is enabled. Generating plots.")
             create_plots(processed_data)  # plot1
-            create_plot2(processed_data)  # plot2
+            create_plots2(processed_data)  # plot2
 
         action_logger.info("Runoff modeling process completed successfully.")
         return processed_data #for further analysis
