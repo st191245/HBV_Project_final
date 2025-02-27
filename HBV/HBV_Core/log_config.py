@@ -2,7 +2,7 @@ from HBV_Core.user_config import *
 import logging
 
 
-# Authored by:Shunmuga Priya
+# Authored by:Shunmuga Priya & Hedieh
 def setup_logger(name, log_file, level=logging.INFO):
     """
     Configures a logger to write log messages to a specified file.
