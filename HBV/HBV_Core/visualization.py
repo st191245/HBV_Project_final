@@ -25,7 +25,6 @@ def create_plots(data_hbv):
 
     action_logger.info("Scatter plots for discharge volume created successfully.")
 
-   
     fig = go.Figure(data=discharge_plots) # Create the figure
 
     # Update the layout
@@ -65,7 +64,7 @@ def create_plots2(data_hbv):
 
     # Update the layout
     fig1.update_layout(
-        title='Soil_Moisture and Precipitation',xaxis_title='Date',yaxis_title='Soil_moisture','Precipitation',
+        title='Soil_Moisture and Precipitation',xaxis_title='Date',yaxis_title='Soil_moisture & Precipitation',
         legend_title='soil_moisture',
         xaxis=dict(rangeslider=dict(visible=True)),  # Adding the range slider for zooming
     )
@@ -74,7 +73,7 @@ def create_plots2(data_hbv):
 
     return fig1
 
-    action_logger.info("Scatter plots displayed successfully.")
+
 
 
 
