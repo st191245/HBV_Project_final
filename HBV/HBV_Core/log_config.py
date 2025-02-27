@@ -1,39 +1,38 @@
 from HBV_Core.user_config import *
+import logging
 
-#Authors:Hedieh,Shunmuga Priya
+
+# Authored by:Shunmuga Priya
 def setup_logger(name, log_file, level=logging.INFO):
     """
-    Sets up a logger to log messages to a specified log file with the given logging level.
-
-    This function creates a logger object with a file handler, sets the logging level,
-    and attaches a formatter to structure the log messages. The log file stores all
-    the logged messages.
+    Configures a logger to write log messages to a specified file.
 
     :param name: Name of the logger (e.g., 'action', 'warning', 'error').
-    :param log_file: Path to the log file where messages should be saved.
-    :param level: The minimum severity level of messages to be logged. Default is INFO.
-    :return: A logger object configured with the specified settings.
+    :param log_file: Path to the log file.
+    :param level: The minimum log level to capture (default is INFO).
+    :return: Configured logger object.
     """
-    # Create a file handler that logs messages to the specified log file with UTF-8 encoding.
-    handler = logging.FileHandler(log_file, encoding='utf-8')
+    # Create a file handler to write logs to the specified log file with UTF-8 encoding
+    handler = logging.FileHandler(log_file, encoding="utf-8")
 
-    # Set up a formatter that defines the format of the log messages.
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    handler.setFormatter(formatter)
+    # Define the log message format (timestamp, logger name, log level, and message)
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    handler.setFormatter(formatter)  # Set the format for the handler
 
-    # Create a logger object with the specified name.
+    # Create and configure the logger
     logger = logging.getLogger(name)
+    logger.setLevel(level)  # Set the log level (e.g., INFO, WARNING, ERROR)
+    logger.addHandler(handler)  # Add the handler to the logger
 
-    # Set the logging level for the logger (e.g., INFO, WARNING, ERROR).
-    logger.setLevel(level)
-
-    # Add the handler to the logger so that it writes to the log file.
-    logger.addHandler(handler)
-
-    return logger  # Return the configured logger object.
+    return logger
 
 
-# Create loggers for different purposes: action, warning, and error logs.
-action_logger = setup_logger('action', '../HBV/actions.log', logging.INFO)  # For general actions and information.
-warning_logger = setup_logger('warning', '../HBV/warnings.log', logging.WARNING)  # For warning messages.
-error_logger = setup_logger('error', '../HBV/errors.log', logging.ERROR)  # For error messages.
+# logfile paths
+ACTION_LOG_FILE = os.path.join(BASE_PATH, "actions.log")  # Log file for action-related logs
+WARNING_LOG_FILE = os.path.join(BASE_PATH, "warnings.log")  # Log file for warning logs
+ERROR_LOG_FILE = os.path.join(BASE_PATH, "errors.log")  # Log file for error logs
+
+# Create separate loggers for different log types
+action_logger = setup_logger("action", ACTION_LOG_FILE, logging.INFO)  # Logger for infos
+warning_logger = setup_logger("warning", WARNING_LOG_FILE, logging.WARNING)  # Logger for warnings
+error_logger = setup_logger("error", ERROR_LOG_FILE, logging.ERROR)  # Logger for errors
