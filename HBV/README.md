@@ -121,8 +121,12 @@ To run this project successfully, the following dependencies are required:
 *    `plotly.offline`
 *    `os`
 *    `logging`
-Note: * The versions of the required libraries are included in a text file within this folder. This text file lists the specific versions of each library that are necessary for the proper execution of this project.
-      *This project was designed and written on a Windows machine. If you are running this code on a Windows system, the current configurations and dependencies should work as expected. However, if you plan to use this project on a Linux machine, please be aware that certain configurations (such as file paths, system-specific libraries, or environment settings) may need to be adjusted.
+
+#### Note:
+-  The versions of the required libraries are included in a text file within this folder. This text file lists the specific versions of each library that are necessary for the proper execution of this project.
+-  This project was designed and written on a Windows machine. If you are running this code on a Windows system, the current configurations and dependencies should work as expected. However, if you plan to use this project on a Linux 
+   machine, please be aware that certain configurations (such as file paths, system-specific libraries, or environment settings) may need to be adjusted.
+  
 ### Input data
 The reference data used in this project is sourced from catchment attributes and hydro-meteorological time series for 671 catchments across Great Britain, provided by the CAMELS-GB dataset.
 
