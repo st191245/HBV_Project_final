@@ -54,7 +54,7 @@ def create_plots(data_hbv):
     fig.show()
 
     # Save the plot as an interactive HTML file
-    pyo.plot(fig, filename="discharge_volume_simulation.html")
+    pyo.plot(fig, filename="discharge_volume_simulation.html",auto_open=False)
 
     return fig
 
@@ -107,6 +107,6 @@ def create_plots2(data_hbv):
     action_logger.info("Scatter plots displayed successfully.")
 
     # Save the plot as an interactive HTML file
-    pyo.plot(fig1, filename="soil_moisture_and_precipitation.html")
+    pyo.plot(fig1, filename="soil_moisture_and_precipitation.html",auto_open=False)
 
     return fig1
