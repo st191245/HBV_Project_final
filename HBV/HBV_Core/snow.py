@@ -10,6 +10,9 @@ class DataReader:
      Author: Sharif
      """
     def __init__(self, csv_file_name=CSV_FILE_NAME, delimiter=","):
+        """
+        Initializes the class with given parameters
+        """
         self.sep = delimiter
         self.data_hbv = pd.DataFrame()
         self.get_hbv_data(csv_file_name)
@@ -52,9 +55,12 @@ class Snow(DataReader):
        :param Cmelt: float, snowmelt coefficient (default is Cmelt)
        :param SWE: float, snow water equivalent (default is SWE_INITIAL)
        :return: None
-       Author: Hedieh
+       Authored by : Hedieh
        """
-    def __init__(self, csv_file_name=CSV_FILE_NAME, TT=TT, Cmelt=Cmelt, SWE=SWE_INITIAL):
+    def __init__(self, csv_file_name=CSV_FILE_NAME, TT=TT, Cmelt=CMELT, SWE=SWE_INITIAL):
+        """
+         Initializes the Snow model with given parameters.
+        """
         super().__init__(csv_file_name)
         self.TT = TT
         self.Cmelt = Cmelt
@@ -75,16 +81,16 @@ class Snow(DataReader):
         liquid_water_values = []  # Initialize an empty list
 
         for _, row in self.data_hbv.iterrows():
-            temperature = row["temperature"]
+            temperature = row["temperature"] # Accessing rows in the Dataframe
             precipitation = row["precipitation"]
 
-            if temperature < self.TT:
+            if temperature < self.TT: # Calculation of liquid_water
                 self.SWE += precipitation
                 liquid_water = 0.0
             else:
                 melt = self.Cmelt * (temperature - self.TT)
                 liquid_water = precipitation + np.min([self.SWE, melt])
-                self.SWE = np.max([0.0, self.SWE - melt])
+                self.SWE = np.max([0.0, self.SWE - melt]) # Updated Snow Water Equivalent
 
             liquid_water_values.append(liquid_water)  # Append result to the list
 
@@ -93,7 +99,7 @@ class Snow(DataReader):
 
         action_logger.info("Snow melt calculations completed successfully.")
 
-        return self.data_hbv  # ✅ Return after processing all rows
+        return self.data_hbv  
 
     def __str__(self):
         """
