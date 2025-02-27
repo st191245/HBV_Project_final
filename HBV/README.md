@@ -63,7 +63,7 @@ where,
    *  $C_{\text{melt}}$ - the coefficient that determines snow melt per degree of temperature
 
 
-#### 2. Evapo Transpiration(ET) Module
+#### 2. Evapotranspiration (ET) Module
 
 Evapotranspiration (ET) refers to the combined process of water evaporation from the soil and transpiration from plants. To calculate ET, this project considered several factors including the  soil moisture , potential evapotranspiration 𝒑et, and the permanent wilting point (𝒑𝒘𝒑). If the previous soil moisture is greater than the permanent wilting point, evapotranspiration occurs at its potential rate:
 
@@ -83,7 +83,7 @@ i. Current Soil Moisture ($SM_t$):
 * Current Soil Moisture ($SM_t$):
 * Formula: 
 
-$$ SM_t = \max(0.0, SM - 1 + LW_t \cdot \beta)^{[3]} $$
+$$ SM_t = \max(0.0, SM_{t-1} + LW_t \cdot \beta)^{[3]} $$
 
 
 
@@ -91,7 +91,7 @@ ii. Final Soil Moisture:
 * Adjusted for outflow to groundwater and evapotranspiration.
 * Formula:
   
-$$ SM_t = \max(0, SM_{t-1} + LW_t \cdot (Q_{b,t} + ET_t))^{[3]} $$
+$$ SM_t = \max(0.0, SM_{t-1} + LW_t \cdot (Q_{b,t} + ET_t))^{[3]} $$
 
 
 #### 4. Runoff Calculation
