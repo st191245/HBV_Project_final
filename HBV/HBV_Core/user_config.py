@@ -29,7 +29,7 @@ except ImportError:
     print("ERROR: Cannot import plotly.graph_objects, plotly.offline packages.")
 
 # File paths
-BASE_PATH = r"D:\python-exercises\HBV"
+BASE_PATH = os.getcwd()
 CSV_FILE_NAME = os.path.join(BASE_PATH, "data", "CAMELS_GB_hydromet_timeseries_12007.csv")
 OUTPUT_FILE = os.path.join(BASE_PATH, "Data_with_discharge_simulated_output1.csv")
 
