@@ -58,7 +58,7 @@ def statistics(processed_data):
     print("Discharge Volume observed - Mean:", np.nanmean(processed_data['discharge_vol']),
           "Std:", np.nanstd(processed_data['discharge_vol']))
 
-def main():
+def main_calculation():
     """
     Main function to run the entire process, starting with the runoff modeling
     calculation and then calculating statistics.
@@ -67,4 +67,4 @@ def main():
     statistics(processed_data)          # Pass processed data to statistics function to calculate the statistics
 
 if __name__ == "__main__":
-    main()
+     main_calculation()
