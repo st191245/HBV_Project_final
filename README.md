@@ -226,7 +226,7 @@ The main.py file accesses the `HBV_Core` package to execute the HBV hydrological
 
 2.`statistics(processed_data)`-This function looks at runoff data and calculates the average and standard deviation for key variables like precipitation, simulated discharge, and observed discharge. This helps to see how the model's results compare to actual data, making it easier to understand and improve the model.
 
-3.`main()`-This function serves as the entry point for the runoff modeling process. It first calls `hbv_calculation()` to process hydrological data, including snowmelt, evapotranspiration, soil moisture, and discharge volume calculations. Once the data is processed, it passes the results to the `statistics()` function, which analyzes key metrics like mean and standard deviation. This function ensures the complete execution of the model and statistical evaluation in a structured manner.
+3.`main_calculation()`-This function serves as the entry point for the runoff modeling process. It first calls `hbv_calculation()` to process hydrological data, including snowmelt, evapotranspiration, soil moisture, and discharge volume calculations. Once the data is processed, it passes the results to the `statistics()` function, which analyzes key metrics like mean and standard deviation. This function ensures the complete execution of the model and statistical evaluation in a structured manner.
 
 ## UML
 >   ![Imgname](UML_HBV.png)
