@@ -1,0 +1,119 @@
+from HBV_Core.log_config import *
+
+class DataReader:
+    """
+     Loads HBV model data from a CSV file into a pandas DataFrame.
+
+     :param csv_file_name: str, path to the CSV file (default is CSV_FILE_NAME)
+     :param delimiter: str, delimiter used in the CSV file (default is ",")
+     :return: None
+     Author: Sharif
+     """
+    def __init__(self, csv_file_name=CSV_FILE_NAME, delimiter=","):
+        """
+        Initializes the class with given parameters
+        """
+        self.sep = delimiter
+        self.data_hbv = pd.DataFrame()
+        self.get_hbv_data(csv_file_name)
+
+    def get_hbv_data(self, csv_file_name):
+        """
+               Loads the HBV model data from the specified CSV file.
+
+               :param csv_file_name: str, path to the CSV file
+               :return: None
+               """
+        try:
+            self.data_hbv = pd.read_csv(csv_file_name, header=0, sep=self.sep)
+            action_logger.info(f"Data loaded successfully from {csv_file_name}")
+
+        except FileNotFoundError:
+            error_logger.error(f"File not found: {csv_file_name}. Ensure the file exists at the specified path.")
+            raise
+        except Exception as e:
+            error_logger.error(f"An unexpected error occurred while loading data: {str(e)}")
+            raise
+
+    def drop_missing_data(self):
+        """
+        Drops rows with any missing values from the DataFrame.
+        :return: None -as already dataframe is modified in place
+        """
+        try:
+            self.data_hbv.dropna(inplace=True)
+            action_logger.info("Dropped missing data successfully.")
+        except Exception as e:
+            error_logger.error(f"An unexpected error occurred while dropping missing data: {str(e)}")
+
+class Snow(DataReader):
+    """
+       Models snowmelt in the HBV model, inheriting from DataReader.
+
+       :param csv_file_name: str, path to the CSV file (default is CSV_FILE_NAME)
+       :param TT: float, temperature threshold for snowmelt (default is TT)
+       :param Cmelt: float, snowmelt coefficient (default is Cmelt)
+       :param SWE: float, snow water equivalent (default is SWE_INITIAL)
+       :return: None
+       Authored by : Hedieh
+       """
+    def __init__(self, csv_file_name=CSV_FILE_NAME, TT=TT, Cmelt=CMELT, SWE=SWE_INITIAL):
+        """
+         Initializes the Snow model with given parameters.
+        """
+        super().__init__(csv_file_name)
+        self.TT = TT
+        self.Cmelt = CMELT
+        self.SWE = SWE
+        action_logger.info(f"Snow model initialized with TT={self.TT}, Cmelt={self.Cmelt}, SWE={self.SWE}")
+
+    def calculate_snow_melt(self):
+        """
+        Calculates the snowmelt based on temperature and precipitation values.
+
+        :return: pandas.DataFrame, updated DataFrame with 'liquid_water' column
+        """
+        if 'temperature' not in self.data_hbv.columns or 'precipitation' not in self.data_hbv.columns:
+            warning_logger.warning(
+                "Missing columns: 'temperature' or 'precipitation'. Ensure the data contains these columns")
+            raise KeyError("Required columns 'temperature' or 'precipitation' are missing from the DataFrame.")
+
+        liquid_water_values = []  # Initialize an empty list
+
+        for _, row in self.data_hbv.iterrows():
+            temperature = row["temperature"] # Accessing rows in the Dataframe
+            precipitation = row["precipitation"]
+
+            if temperature < self.TT: # Calculation of liquid_water
+                self.SWE += precipitation
+                liquid_water = 0.0
+            else:
+                melt = self.Cmelt * (temperature - self.TT)
+                liquid_water = precipitation + np.min([self.SWE, melt])
+                self.SWE = np.max([0.0, self.SWE - melt]) # Updated Snow Water Equivalent
+
+            liquid_water_values.append(liquid_water)  # Append result to the list
+
+        # Assign the list after the loop is complete
+        self.data_hbv["liquid_water"] = liquid_water_values
+
+        action_logger.info("Snow melt calculations completed successfully.")
+
+        return self.data_hbv  
+
+    def __str__(self):
+        """
+                Returns a string summary of the Snow model parameters.
+
+                :return: str, string summary of TT, Cmelt, and SWE
+                """
+        return f"Snow model with TT={self.TT}, Cmelt={self.Cmelt}, SWE={self.SWE}"
+
+
+
+
+
+
+
+
+
