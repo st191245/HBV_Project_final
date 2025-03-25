@@ -23,7 +23,9 @@
 
 ## Project purpose/description 
 
-The project aims to implement a hydrological model for simulating river discharge based on various factors such as rainfall and snowfall,temperature,evapotranspiration and soil moisture storage.The project helps in understanding hydrological processes and their role in water resource management and flood forecasting. This model is important for understanding water flows and how it is stored in nature, which helps in managing water resources, anticipating how environmental changes will affect water systems, and making informed decisions in areas related to water use and conservation. 
+This project focuses on implementing a hydrological model based on the HBV (Hydrologiska Byråns Vattenbalansavdelning) approach to simulate river discharge. The model integrates key hydrological variables such as rainfall, snowfall, temperature, evapotranspiration, and soil moisture storage to analyze water balance and predict streamflow.
+
+By simulating river discharge under varying environmental conditions, the model helps in water resource management, flood forecasting, and climate impact assessments. This tool is essential for understanding water flow dynamics, optimizing water use, and mitigating flood risks, making it valuable for researchers, policymakers, and environmental planners.
 ***
 ## Motivation
 Hydrological models play a vital role in water resources engineering by enabling the approximate simulation of river discharge, which is crucial for effective water supply management, hydraulic structure design, and flood risk mitigation. This project implements an HBV-based model to enhance the understanding of catchment hydrology and provide a computational framework for predicting river water flow using meteorological data
