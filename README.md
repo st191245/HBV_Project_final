@@ -16,9 +16,10 @@
 
 ***
 
-### Author: 
-      Shunmuga Priya Subbiah-3703058
-    
+### Authors: BKS
+         1. Shunmuga Priya Subbiah-3703058
+         2. Hedieh Beigi Pouya-3762109
+         3. Mohammad Sharif Khaleqi-3638660
 
 ## Project purpose/description 
 
