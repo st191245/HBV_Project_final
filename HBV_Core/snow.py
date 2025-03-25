@@ -7,7 +7,7 @@ class DataReader:
      :param csv_file_name: str, path to the CSV file (default is CSV_FILE_NAME)
      :param delimiter: str, delimiter used in the CSV file (default is ",")
      :return: None
-     Author: Sharif
+    
      """
     def __init__(self, csv_file_name=CSV_FILE_NAME, delimiter=","):
         """
@@ -55,7 +55,7 @@ class Snow(DataReader):
        :param Cmelt: float, snowmelt coefficient (default is Cmelt)
        :param SWE: float, snow water equivalent (default is SWE_INITIAL)
        :return: None
-       Authored by : Hedieh
+     
        """
     def __init__(self, csv_file_name=CSV_FILE_NAME, TT=TT, Cmelt=CMELT, SWE=SWE_INITIAL):
         """
