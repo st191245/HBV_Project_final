@@ -1,10 +1,9 @@
 """
 User Configuration File
 
-Authors:
+Author:
 - Shunmuga Priya Subbiah, WAREM
-- Hedieh Beigi Pouya, WAREM
-- Mohammad Sharif Khaleqi, WAREM
+
 """
 
 # Importing standard libraries
