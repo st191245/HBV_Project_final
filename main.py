@@ -3,7 +3,7 @@ from HBV_Core.visualization import *
 from HBV_Core.log_config import *
 from HBV_Core.user_config import *
 
-# Authors: Hedieh,Sharif and Shunmuga Priya
+
 def hbv_calculation():
     """
        Execute the runoff modeling process, including loading data,
