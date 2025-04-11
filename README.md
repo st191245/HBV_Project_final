@@ -16,11 +16,9 @@
 
 ***
 
-### Authors: BKS
-         1. Shunmuga Priya Subbiah-3703058
-         2. Hedieh Beigi Pouya-3762109
-         3. Mohammad Sharif Khaleqi-3638660
-
+### Author:
+        Shunmuga Priya Subbiah-3703058
+         
 ## Project purpose/description 
 
 This project focuses on implementing a hydrological model based on the HBV (Hydrologiska Byråns Vattenbalansavdelning) approach to simulate river discharge. The model integrates key hydrological variables such as rainfall, snowfall, temperature, evapotranspiration, and soil moisture storage to analyze water balance and predict streamflow.
